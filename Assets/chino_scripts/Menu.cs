@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    public Animator myyanim;
 
     [SerializeField]
     private Transform CameraTrans;
@@ -115,8 +114,5 @@ public class Menu : MonoBehaviour
         mierda.SetActive(!mierda.activeSelf);
     }
 
-    public void pasarDeEscena()
-    {
-        myyanim.SetBool("FadeOut", true);
-    }
+   
 }
