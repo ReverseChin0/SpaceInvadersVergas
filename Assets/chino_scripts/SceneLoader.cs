@@ -23,10 +23,6 @@ public class SceneLoader : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        
-    }
 
     public void FadeOut(string scene)
     {

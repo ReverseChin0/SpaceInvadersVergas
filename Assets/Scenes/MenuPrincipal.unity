@@ -12893,7 +12893,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.084222235, y: 0.7798766}
   m_AnchorMax: {x: 0.37300003, y: 0.8605844}
-  m_AnchoredPosition: {x: -0.5, y: -0.6699829}
+  m_AnchoredPosition: {x: -0.5, y: -0.67004395}
   m_SizeDelta: {x: 0.6000061, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1569818311
@@ -14337,7 +14337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.81033325, y: 0.062000003}
   m_AnchorMax: {x: 0.96900004, y: 0.126}
-  m_AnchoredPosition: {x: 0.10003662, y: -0.49993896}
+  m_AnchoredPosition: {x: 0.10003662, y: -0.5}
   m_SizeDelta: {x: -0.2999878, y: -0.3999939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1820575105
@@ -15059,7 +15059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.81033325, y: 0.062000003}
   m_AnchorMax: {x: 0.96900004, y: 0.126}
-  m_AnchoredPosition: {x: 0.10003662, y: -0.49993896}
+  m_AnchoredPosition: {x: 0.10003662, y: -0.5}
   m_SizeDelta: {x: -0.2999878, y: -0.3999939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1855179988
@@ -21189,8 +21189,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 261594811}
-        m_MethodName: FadeOut
+      - m_Target: {fileID: 508283220}
+        m_MethodName: SearchSceneLoaderAndLoad
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -102,6 +102,10 @@ public class Menu : MonoBehaviour
         valorT = 0.0f;
     }
 
+    public void SearchSceneLoaderAndLoad(string scName)
+    {
+        SceneLoader.instancia.FadeOut(scName);
+    }
     
 
     public void QuitGame()//Para salir del puto juego de mierda
