@@ -4040,7 +4040,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Moises '
+  m_text: "Moises Gonz\xE1lez Ceballos"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 868fce6e81f0e0a458522c213d2d2be2, type: 2}
   m_sharedMaterial: {fileID: -5148658131244900649, guid: 868fce6e81f0e0a458522c213d2d2be2,
@@ -5858,7 +5858,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Beto
+  m_text: "Jose Alberto Alarc\U000EE8C5\xF3n Espinosa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 868fce6e81f0e0a458522c213d2d2be2, type: 2}
   m_sharedMaterial: {fileID: -5148658131244900649, guid: 868fce6e81f0e0a458522c213d2d2be2,
@@ -13374,7 +13374,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Beto
+  m_text: "Jose Alberto Alarc\xF2n Espinosa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 868fce6e81f0e0a458522c213d2d2be2, type: 2}
   m_sharedMaterial: {fileID: -5148658131244900649, guid: 868fce6e81f0e0a458522c213d2d2be2,
@@ -15284,7 +15284,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Moises
+  m_text: "Moises Gonz\xE1lez Ceballos"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 868fce6e81f0e0a458522c213d2d2be2, type: 2}
   m_sharedMaterial: {fileID: -5148658131244900649, guid: 868fce6e81f0e0a458522c213d2d2be2,

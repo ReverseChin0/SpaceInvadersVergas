@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Enemigos : MonoBehaviour
 {
-    public Transform Player;
+    public Transform Player, EndCannon;
+    ObjectPooler Pool;
 
     public bool DasherGuy = false;
-    public float bottomLimit = -5f;
 
-    public float velocidaddemovimiento = 3f, rango = 10.0f, velocidadhaciabajo = 0.0f, tiempodedisparo = 1.0f;
+    public float velocidaddemovimiento = 3f, rango = 10.0f, velocidadhaciabajo = 0.0f, tiempodedisparo = 1.0f, bottomLimit = -5f, limitesLaterales = 8.0f;
+    
 
-    bool right = true;
+    bool right = true, esperar = false;
 
     Rigidbody rbody;
     Vector2 direccion, posactual;
@@ -20,6 +21,8 @@ public class Enemigos : MonoBehaviour
     {
         rbody = GetComponent<Rigidbody>();
         posactual = new Vector2(transform.position.x, transform.position.y);
+
+        Pool = FindObjectOfType<ObjectPooler>();
 
         if (DasherGuy)
         {
@@ -32,6 +35,7 @@ public class Enemigos : MonoBehaviour
                 right = true;
             }
         }
+
     }
 
     void Update()
@@ -45,7 +49,7 @@ public class Enemigos : MonoBehaviour
 
         if (DasherGuy)
         {
-
+            MovimientoDasher();
         }
         else
         {
@@ -69,12 +73,42 @@ public class Enemigos : MonoBehaviour
 
     public void MovimientoDasher()
     {
-        if(right)
+        if (!esperar)
+        {
+            if (right)
+            {
+                direccion = new Vector2(velocidaddemovimiento, 0);
+                if(posactual.x > limitesLaterales)
+                {
+                    right = false;
+                }
+            }
+            else
+            {
+                direccion = new Vector2(-velocidaddemovimiento, 0);
+                if (posactual.x < -limitesLaterales)
+                {
+                    right = true;
+                }
+            }
+
+            rbody.MovePosition(posactual + direccion * Time.deltaTime);
+
+            float distancia = posactual.x - Player.position.x;
+            distancia = Mathf.Abs(distancia);
+            if (distancia < 1)
+            {
+                esperar = true;
+                StartCoroutine(WaitToMove(3f));
+            };
+        }
     }
 
     IEnumerator WaitToMove(float time)
     {
+        Pool.SpawnBulletFromPool(true, EndCannon.position, Quaternion.identity);
         yield return new WaitForSeconds(time);
-
+        //right = !right;
+        esperar = false;
     }
 }

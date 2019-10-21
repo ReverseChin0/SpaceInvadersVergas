@@ -80,22 +80,31 @@ public class ObjectPooler : MonoBehaviour
         return ObjetoaSpawnear;
     }
 
-    public GameObject SpawnBulletFromPool(string tagbullet, Vector3 posicion, Quaternion rotacion, Vector2 direccion)
+    public GameObject SpawnBulletFromPool(bool TipoBala, Vector3 posicion, Quaternion rotacion)
     {
         //Pa que no existan errores por pasar tag invalido
-        if (!poolDiccionario.ContainsKey(tagbullet))
+        /* if (!poolDiccionario.ContainsKey(tagbullet))
+         {
+             Debug.LogWarning("El Pool con tag " + tagbullet + " no existe");
+             return null;
+         }*/
+        GameObject ObjetoaSpawnear;
+        if (TipoBala)
         {
-            Debug.LogWarning("El Pool con tag " + tagbullet + " no existe");
-            return null;
+             ObjetoaSpawnear = poolDiccionario["BalasMalas"].Dequeue();
         }
-
-        GameObject ObjetoaSpawnear = poolDiccionario[tagbullet].Dequeue();
+        else
+        {
+             ObjetoaSpawnear = poolDiccionario["BalasMalas"].Dequeue();
+        }
+        
 
         ObjetoaSpawnear.SetActive(true);
         ObjetoaSpawnear.transform.position = posicion;
         ObjetoaSpawnear.transform.rotation = rotacion;
 
         Bullet mibull = ObjetoaSpawnear.GetComponent<Bullet>();
+        mibull.initializeBullet();
       /*  mibull.DireccDisparo = direccion;
         mibull.activated = true;
 
