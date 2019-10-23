@@ -106,11 +106,11 @@ public class ObjectPooler : MonoBehaviour
         Bullet mibull = ObjetoaSpawnear.GetComponent<Bullet>();
         mibull.initializeBullet();
       /*  mibull.DireccDisparo = direccion;
-        mibull.activated = true;
+        mibull.activated = true;*/
 
 
-        poolDiccionario[tagbullet].Enqueue(ObjetoaSpawnear);
-        mibull.activar();*/
+        poolDiccionario["BalasMalas"].Enqueue(ObjetoaSpawnear);
+       
         return ObjetoaSpawnear;
     }
 }

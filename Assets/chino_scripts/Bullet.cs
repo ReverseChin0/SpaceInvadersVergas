@@ -14,10 +14,17 @@ public class Bullet : MonoBehaviour
     {
         myRig = GetComponent<Rigidbody>();
     }
+
     public void initializeBullet()
     {
-        Debug.Log(myRig + " , " + Direccion + " , " + Fuerza);
+        //Debug.Log(myRig + " , " + Direccion + " , " + Fuerza);
+        myRig.velocity = Vector3.zero;
         myRig.AddForce(Direccion * Fuerza * 10);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        print(collision.gameObject.tag);
+        gameObject.SetActive(false);
+    }
 }

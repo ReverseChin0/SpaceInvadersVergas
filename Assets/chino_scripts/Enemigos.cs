@@ -69,6 +69,12 @@ public class Enemigos : MonoBehaviour
         }
              
         rbody.MovePosition(posactual + direccion * Time.deltaTime);
+
+        if (!esperar)
+        {
+            esperar = true;
+            StartCoroutine(WaitToMove(Random.Range(1.5f, 5f)));
+        }
     }
 
     public void MovimientoDasher()
@@ -99,16 +105,25 @@ public class Enemigos : MonoBehaviour
             if (distancia < 1)
             {
                 esperar = true;
-                StartCoroutine(WaitToMove(3f));
+                StartCoroutine(WaitToMove(1.5f));
             };
         }
     }
 
     IEnumerator WaitToMove(float time)
     {
+        yield return new WaitForSeconds(0.01f);
         Pool.SpawnBulletFromPool(true, EndCannon.position, Quaternion.identity);
         yield return new WaitForSeconds(time);
         //right = !right;
         esperar = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
