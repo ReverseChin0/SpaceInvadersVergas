@@ -6,9 +6,9 @@ public class Enemigos : MonoBehaviour
 {
     public Transform Player, EndCannon;
     ObjectPooler Pool;
-
+    [Space(10.0f)]
+    public int vida = 100;
     public bool DasherGuy = false;
-
     public float velocidaddemovimiento = 3f, rango = 10.0f, velocidadhaciabajo = 0.0f, tiempodedisparo = 1.0f, bottomLimit = -5f, limitesLaterales = 8.0f;
     
 
@@ -35,7 +35,6 @@ public class Enemigos : MonoBehaviour
                 right = true;
             }
         }
-
     }
 
     void Update()
@@ -117,6 +116,21 @@ public class Enemigos : MonoBehaviour
         yield return new WaitForSeconds(time);
         //right = !right;
         esperar = false;
+    }
+
+    public void TakeDMG(int dmg)
+    {
+        vida -= dmg;
+        if(vida <= 0)
+        {
+            Morir();
+        }
+    }
+
+    public void Morir()
+    {
+        Debug.Log("Aqui van las animaciones/particulas muerte");
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)

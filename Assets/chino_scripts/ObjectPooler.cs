@@ -95,7 +95,7 @@ public class ObjectPooler : MonoBehaviour
         }
         else
         {
-             ObjetoaSpawnear = poolDiccionario["BalasMalas"].Dequeue();
+             ObjetoaSpawnear = poolDiccionario["BalasBuenas"].Dequeue();
         }
         
 

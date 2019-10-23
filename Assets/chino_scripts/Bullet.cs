@@ -24,7 +24,15 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print(collision.gameObject.tag);
-        gameObject.SetActive(false);
+        Collider coli = collision.collider;
+        if (coli.CompareTag("Enemie") && !Enemiga)
+        {
+            coli.GetComponent<Enemigos>().TakeDMG(35);
+        }
+        else if (coli.CompareTag("FinalBoss") && !Enemiga)
+        {
+            coli.GetComponent<FinalBoss>().TakeDmg(50);
+        }
+            gameObject.SetActive(false);
     }
 }
