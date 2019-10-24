@@ -17,8 +17,7 @@ public class character_movement : MonoBehaviour
 
     }
 
-    void Update()
-    {
+    void Update() {
 
         MovementAndRotation();
 
@@ -32,6 +31,8 @@ public class character_movement : MonoBehaviour
         float x_axis_movement = Input.GetAxis("Horizontal") * 10;
         x_axis_movement *= Time.deltaTime;
         transform.Translate(x_axis_movement, 0, 0, Space.World);
+
+        /*
 
         //camera y rotation
 
@@ -61,6 +62,7 @@ public class character_movement : MonoBehaviour
 
         }
 
+        */
     }
 
 }

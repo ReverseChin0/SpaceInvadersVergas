@@ -14,15 +14,8 @@ public class safespots : MonoBehaviour
 
     }
 
-    private void Update()
-    {
+    private void Update() {
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            PlaceSafespot();
-
-        }
     }
 
     private void PlaceSafespot()
