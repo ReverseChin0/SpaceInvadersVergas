@@ -26,7 +26,7 @@ public class safespots : MonoBehaviour
 
         if (_safespots[index].activeSelf) return; //si ya se encuentra activo
 
-        _safespots[index].transform.position = new Vector3(Random.Range(-40.0f, 40.0f), 0, 0);
+        _safespots[index].transform.position = new Vector3(Random.Range(-9.0f, 9.0f), 0, 0);
 
         for (int i = 0; i < _safespots.Length; i++)
         {
