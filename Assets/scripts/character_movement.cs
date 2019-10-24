@@ -7,20 +7,21 @@ public class character_movement : MonoBehaviour
     public float vertical_view_limit = 30;
 
     private Camera character_view;
+    ObjectPooler Pool;
     private float x, y;
+
+    public Transform shootingPoint;
 
     void Start()
     {
-
         Cursor.lockState = CursorLockMode.Locked;
         character_view = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
+        Pool = FindObjectOfType<ObjectPooler>();
     }
 
     void Update() {
 
         MovementAndRotation();
-
     }
 
     private void MovementAndRotation()
@@ -31,6 +32,12 @@ public class character_movement : MonoBehaviour
         float x_axis_movement = Input.GetAxis("Horizontal") * 10;
         x_axis_movement *= Time.deltaTime;
         transform.Translate(x_axis_movement, 0, 0, Space.World);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Pool.SpawnBulletFromPool(false, shootingPoint.position, Quaternion.identity);
+        }
+
 
         /*
 

@@ -89,13 +89,16 @@ public class ObjectPooler : MonoBehaviour
              return null;
          }*/
         GameObject ObjetoaSpawnear;
+        string bala;
         if (TipoBala)
         {
-             ObjetoaSpawnear = poolDiccionario["BalasMalas"].Dequeue();
+            bala = "BalasMalas";
+             ObjetoaSpawnear = poolDiccionario[bala].Dequeue();
         }
         else
         {
-             ObjetoaSpawnear = poolDiccionario["BalasBuenas"].Dequeue();
+            bala = "BalasBuenas";
+             ObjetoaSpawnear = poolDiccionario[bala].Dequeue();
         }
         
 
@@ -109,7 +112,7 @@ public class ObjectPooler : MonoBehaviour
         mibull.activated = true;*/
 
 
-        poolDiccionario["BalasMalas"].Enqueue(ObjetoaSpawnear);
+        poolDiccionario[bala].Enqueue(ObjetoaSpawnear);
        
         return ObjetoaSpawnear;
     }
