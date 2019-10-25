@@ -23,7 +23,6 @@ public class SceneLoader : MonoBehaviour
 
     }
 
-
     public void FadeOut(string scene)
     {
         myyanim.SetBool("FadeOut", true);

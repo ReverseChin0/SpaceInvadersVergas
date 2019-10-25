@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8643517255652280432}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontal_view_limit: 30
   vertical_view_limit: 30
+  shootingPoint: {fileID: 8643517255652280432}
 --- !u!1 &5344402862655727380
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,7 +41,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if(canPause && Input.GetButtonDown("Cancel"))
+        if(canPause && Input.GetKeyDown(KeyCode.P))
         {
                MyPause();
         }

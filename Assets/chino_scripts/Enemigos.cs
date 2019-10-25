@@ -10,7 +10,9 @@ public class Enemigos : MonoBehaviour
     public int vida = 100;
     public bool DasherGuy = false;
     public float velocidaddemovimiento = 3f, rango = 10.0f, velocidadhaciabajo = 0.0f, tiempodedisparo = 1.0f, bottomLimit = -5f, limitesLaterales = 8.0f;
-    
+
+
+    float Begintime = 0;
 
     bool right = true, esperar = false;
 
@@ -23,7 +25,7 @@ public class Enemigos : MonoBehaviour
         posactual = new Vector2(transform.position.x, transform.position.y);
 
         Pool = FindObjectOfType<ObjectPooler>();
-
+        Player = FindObjectOfType<character_movement>().transform;
         if (DasherGuy)
         {
             if(Player.position.x >= transform.position.x)
@@ -34,6 +36,10 @@ public class Enemigos : MonoBehaviour
             {
                 right = true;
             }
+        }
+        else
+        {
+            Begintime = Time.time;
         }
     }
 
@@ -60,7 +66,7 @@ public class Enemigos : MonoBehaviour
     {
         if (posactual.y > bottomLimit)
         {
-            direccion = new Vector2(Mathf.Sin(Time.time * rango) * velocidaddemovimiento, -velocidadhaciabajo);
+            direccion = new Vector2(Mathf.Sin((Time.time-Begintime) * rango) * velocidaddemovimiento, -velocidadhaciabajo);
         }
         else
         {
@@ -121,7 +127,8 @@ public class Enemigos : MonoBehaviour
     public void TakeDMG(int dmg)
     {
         vida -= dmg;
-        if(vida <= 0)
+        rbody.velocity = Vector3.zero;
+        if (vida <= 0)
         {
             Morir();
         }
@@ -129,8 +136,18 @@ public class Enemigos : MonoBehaviour
 
     public void Morir()
     {
+        if (DasherGuy)
+        {
+            esperar = false;
+        }
+        CamShake.UniCam.Shake();
         Debug.Log("Aqui van las animaciones/particulas muerte");
         gameObject.SetActive(false);
+    }
+
+    public void InitializeNoDasher()
+    {
+        Begintime = Time.time;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -138,6 +155,10 @@ public class Enemigos : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             gameObject.SetActive(false);
+        }
+        else if (collision.collider.CompareTag("Coberturas"))
+        {
+            collision.gameObject.SetActive(false);
         }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemie
   - FinalBoss
+  - Coberturas
   layers:
   - Default
   - TransparentFX

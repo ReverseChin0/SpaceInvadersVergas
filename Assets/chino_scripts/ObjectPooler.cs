@@ -67,9 +67,9 @@ public class ObjectPooler : MonoBehaviour
         ObjetoaSpawnear.SetActive(true);
         ObjetoaSpawnear.transform.position = posicion;
         ObjetoaSpawnear.transform.rotation = rotacion;
-        if (tag == "Particulas")
+        if (tag == "Enemigo1")
         {
-            ObjetoaSpawnear.GetComponent<ParticleSystem>().Play();
+            ObjetoaSpawnear.GetComponent<Enemigos>().InitializeNoDasher();
         }
         if (tag == "Explosiones")
         {
@@ -82,12 +82,7 @@ public class ObjectPooler : MonoBehaviour
 
     public GameObject SpawnBulletFromPool(bool TipoBala, Vector3 posicion, Quaternion rotacion)
     {
-        //Pa que no existan errores por pasar tag invalido
-        /* if (!poolDiccionario.ContainsKey(tagbullet))
-         {
-             Debug.LogWarning("El Pool con tag " + tagbullet + " no existe");
-             return null;
-         }*/
+
         GameObject ObjetoaSpawnear;
         string bala;
         if (TipoBala)
@@ -108,12 +103,37 @@ public class ObjectPooler : MonoBehaviour
 
         Bullet mibull = ObjetoaSpawnear.GetComponent<Bullet>();
         mibull.initializeBullet();
-      /*  mibull.DireccDisparo = direccion;
-        mibull.activated = true;*/
-
 
         poolDiccionario[bala].Enqueue(ObjetoaSpawnear);
        
+        return ObjetoaSpawnear;
+    }
+
+    public GameObject SpawnParticle(bool enemiga, Vector3 posicion, Quaternion rotacion)
+    {
+      
+        GameObject ObjetoaSpawnear;
+        string particula;
+        if (enemiga)
+        {
+            particula = "PartiBads";
+            ObjetoaSpawnear = poolDiccionario[particula].Dequeue();
+        }
+        else
+        {
+            particula = "PartiCools";
+            ObjetoaSpawnear = poolDiccionario[particula].Dequeue();
+        }
+
+
+        ObjetoaSpawnear.SetActive(true);
+        ObjetoaSpawnear.transform.position = posicion;
+        ObjetoaSpawnear.transform.rotation = rotacion;
+
+        ObjetoaSpawnear.GetComponent<ParticleSystem>().Play();
+  
+        poolDiccionario[particula].Enqueue(ObjetoaSpawnear);
+
         return ObjetoaSpawnear;
     }
 }

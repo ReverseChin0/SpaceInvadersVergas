@@ -40,9 +40,7 @@ public class safespots : MonoBehaviour
 
                     if (Vector3.Distance(_safespots[index].GetComponent<Collider>().bounds.center, _safespots[i].transform.GetComponent<Collider>().bounds.center) < 10.0f)
                     {
-
                         counter++;
-
                     }
                 }
 
