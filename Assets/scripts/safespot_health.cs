@@ -6,11 +6,12 @@ public class safespot_health : MonoBehaviour {
 
     public int max_health = 10;
     public int health;
+    ObjectPooler pool;
 
     void Start() {
 
         renew();
-        
+        pool = FindObjectOfType<ObjectPooler>();
     }
 
     public void renew()
@@ -24,6 +25,8 @@ public class safespot_health : MonoBehaviour {
         if(health <= 0)
         {
             gameObject.SetActive(false);
+            AudioFXManager.AudioFXMan.ExplotarFx();
+            pool.SpawnBoom(transform.position);
         }
     }
 

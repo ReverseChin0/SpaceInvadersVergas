@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour
         MyPause();
         miLoader.FadeOut(_scName);
         canPause = false;
+        Cursor.visible = true;
     }
 
     public void SearchLoader()
@@ -24,7 +25,10 @@ public class PauseMenu : MonoBehaviour
     public void MyPause()
     {
         TimetogglePause();
+        Cursor.visible = !pauseMenuM.activeSelf;
+        Cursor.lockState = CursorLockMode.None;
         pauseMenuM.SetActive(!pauseMenuM.activeSelf);
+
     }
 
     public void TimetogglePause()

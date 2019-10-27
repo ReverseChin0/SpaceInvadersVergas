@@ -36,6 +36,7 @@ public class character_movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Pool.SpawnBulletFromPool(false, shootingPoint.position, Quaternion.identity);
+            AudioFXManager.AudioFXMan.ShootFx();
         }
 
 

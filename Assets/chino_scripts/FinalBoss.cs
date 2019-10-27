@@ -55,15 +55,15 @@ public class FinalBoss : MonoBehaviour
             float disparar=0.0f;
             if (fase2 && !fase3)
             {
-                disparar = Random.Range(1.5f, 2.5f);
+                disparar = Random.Range(1.0f, 2.0f);
             }
             else if (fase2 && fase3)
             {
-                disparar = Random.Range(0.5f, 1.0f);
+                disparar = Random.Range(0.2f, 0.8f);
             }
             else
             {
-                disparar = Random.Range(3.0f, 3.5f);
+                disparar = Random.Range(2.0f, 3.5f);
             }
             esperarBalazos = true;
             StartCoroutine(WaitToShoot(disparar));
@@ -77,11 +77,13 @@ public class FinalBoss : MonoBehaviour
         {
             CamShake.UniCam.Shake();
             Morir();
+            Pool.SpawnBoom(transform.position);
         }
         else if (!fase2 && Vida < Vidainicial * 0.75f)
         {
             Debug.Log("Entrando a Fase 2");
             CamShake.UniCam.Shake();
+            Pool.SpawnBoom(transform.position);
             fase2 = true;
             speed *= 1.5f;
             resetPos = true;
@@ -90,6 +92,7 @@ public class FinalBoss : MonoBehaviour
         {
             Debug.Log("Entrando a Fase 3");
             CamShake.UniCam.Shake();
+            Pool.SpawnBoom(transform.position);
             fase3 = true;
             speed *= 1.3f;
             resetPos = true;

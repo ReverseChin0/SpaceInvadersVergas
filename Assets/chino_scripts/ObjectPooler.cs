@@ -136,5 +136,25 @@ public class ObjectPooler : MonoBehaviour
 
         return ObjetoaSpawnear;
     }
+
+    public GameObject SpawnBoom(Vector3 posicion)
+    {
+
+        GameObject ObjetoaSpawnear;
+        
+        ObjetoaSpawnear = poolDiccionario["PartiBoom"].Dequeue();
+        
+
+        ObjetoaSpawnear.SetActive(true);
+        ObjetoaSpawnear.transform.position = posicion;
+        ObjetoaSpawnear.transform.rotation = Quaternion.identity;
+
+        ParticleSystem[] booms =  ObjetoaSpawnear.GetComponentsInChildren<ParticleSystem>();
+        booms[0].Play(); booms[1].Play();
+
+        poolDiccionario["PartiBoom"].Enqueue(ObjetoaSpawnear);
+
+        return ObjetoaSpawnear;
+    }
 }
 

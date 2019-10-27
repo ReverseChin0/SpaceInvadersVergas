@@ -128,9 +128,12 @@ public class Enemigos : MonoBehaviour
     {
         vida -= dmg;
         rbody.velocity = Vector3.zero;
+        AudioFXManager.AudioFXMan.DMGFX();
         if (vida <= 0)
         {
             Morir();
+            AudioFXManager.AudioFXMan.ExplotarFx();
+            Pool.SpawnBoom(transform.position);
         }
     }
 
@@ -141,7 +144,7 @@ public class Enemigos : MonoBehaviour
             esperar = false;
         }
         CamShake.UniCam.Shake();
-        Debug.Log("Aqui van las animaciones/particulas muerte");
+        //Debug.Log("Aqui van las animaciones/particulas muerte");
         gameObject.SetActive(false);
     }
 
