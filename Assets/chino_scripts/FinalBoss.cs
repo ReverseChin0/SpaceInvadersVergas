@@ -35,7 +35,7 @@ public class FinalBoss : MonoBehaviour
         Vector2 posactual = new Vector2(0, transform.position.y);
         if (!resetPos)
         {
-            Debug.Log(posactual + Vector2.down * Time.deltaTime * speed);
+            //Debug.Log(posactual + Vector2.down * Time.deltaTime * speed);
             rbody.MovePosition(posactual + Vector2.down * Time.deltaTime * speed);
         }
         else

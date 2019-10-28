@@ -109,6 +109,36 @@ public class ObjectPooler : MonoBehaviour
         return ObjetoaSpawnear;
     }
 
+    public GameObject SpawnBulletFromPool(bool TipoBala, Vector3 posicion, Quaternion rotacion,Vector2 direccion)
+    {
+
+        GameObject ObjetoaSpawnear;
+        string bala;
+        if (TipoBala)
+        {
+            bala = "BalasMalas";
+            ObjetoaSpawnear = poolDiccionario[bala].Dequeue();
+        }
+        else
+        {
+            bala = "BalasBuenas";
+            ObjetoaSpawnear = poolDiccionario[bala].Dequeue();
+        }
+
+
+        ObjetoaSpawnear.SetActive(true);
+        ObjetoaSpawnear.transform.position = posicion;
+        ObjetoaSpawnear.transform.rotation = rotacion;
+
+        Bullet mibull = ObjetoaSpawnear.GetComponent<Bullet>();
+        mibull.Direccion = direccion;
+        mibull.initializeBullet();
+
+        poolDiccionario[bala].Enqueue(ObjetoaSpawnear);
+
+        return ObjetoaSpawnear;
+    }
+
     public GameObject SpawnParticle(bool enemiga, Vector3 posicion, Quaternion rotacion)
     {
       

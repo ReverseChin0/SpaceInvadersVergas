@@ -224,7 +224,7 @@ MonoBehaviour:
   EndCannon: {fileID: 4098057840607357911}
   vida: 100
   DasherGuy: 1
-  velocidaddemovimiento: 12
+  velocidaddemovimiento: 16
   rango: 1.5
   velocidadhaciabajo: 0.5
   tiempodedisparo: 1

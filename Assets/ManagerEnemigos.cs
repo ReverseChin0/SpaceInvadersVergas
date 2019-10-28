@@ -48,7 +48,7 @@ public class ManagerEnemigos : MonoBehaviour
             }
             else if(type2>0)
             {
-                Pooler.SpawnFromPool("Enemigo2", SpawnPos - new Vector3(0,Random.Range(0,3.0f)), Quaternion.identity);
+                Pooler.SpawnFromPool("Enemigo2", SpawnPos - new Vector3(0,Random.Range(-2.0f,2.0f)), Quaternion.identity);
                 type2--;
                 //Debug.Log("Quedan " + type2 + " complejos");
             }

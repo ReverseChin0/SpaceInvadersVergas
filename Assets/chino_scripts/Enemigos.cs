@@ -92,6 +92,8 @@ public class Enemigos : MonoBehaviour
                 if(posactual.x > limitesLaterales)
                 {
                     right = false;
+                    esperar = true;
+                    StartCoroutine(WaitToMove(1.5f));
                 }
             }
             else
@@ -100,25 +102,34 @@ public class Enemigos : MonoBehaviour
                 if (posactual.x < -limitesLaterales)
                 {
                     right = true;
+                    esperar = true;
+                    StartCoroutine(WaitToMove(1.5f));
                 }
             }
 
             rbody.MovePosition(posactual + direccion * Time.deltaTime);
-
-            float distancia = posactual.x - Player.position.x;
-            distancia = Mathf.Abs(distancia);
-            if (distancia < 1)
+       
+           /* if (distancia < 1)
             {
-                esperar = true;
-                StartCoroutine(WaitToMove(1.5f));
-            };
+               
+            };*/
         }
     }
 
     IEnumerator WaitToMove(float time)
     {
         yield return new WaitForSeconds(0.01f);
-        Pool.SpawnBulletFromPool(true, EndCannon.position, Quaternion.identity);
+        if (DasherGuy)
+        {
+            Vector2 direccionbala = Player.position - transform.position;
+            
+            Pool.SpawnBulletFromPool(true, EndCannon.position, Quaternion.identity, direccionbala.normalized);
+        }
+        else
+        {
+            Pool.SpawnBulletFromPool(true, EndCannon.position, Quaternion.identity);
+        }
+        
         yield return new WaitForSeconds(time);
         //right = !right;
         esperar = false;
