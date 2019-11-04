@@ -5,10 +5,12 @@ public class character_movement : MonoBehaviour {
     ObjectPooler Pool;
     public Transform shootingPoint;
 
+    private Rigidbody rb;
+
     void Start() {
 
         Pool = FindObjectOfType<ObjectPooler>();
-
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update() {
@@ -27,9 +29,9 @@ public class character_movement : MonoBehaviour {
         float x_axis_movement = Input.GetAxis("Horizontal") * 8;
         x_axis_movement *= Time.deltaTime;
 
-        GetComponent<Rigidbody>().velocity = new Vector3(x_axis_movement, 0, 0) * 100;
+        rb.velocity = new Vector3(x_axis_movement, 0, 0) * 100;
 
-        GetComponent<Rigidbody>().position = new Vector3(Mathf.Clamp(GetComponent<Rigidbody>().position.x, -9.0f, 9.0f), 0, 0);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -9.0f, 9.0f), transform.position.y, 0);
 
     }
 

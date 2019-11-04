@@ -6,7 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     public SceneLoader miLoader;
     public GameObject pauseMenuM;
-    bool canPause = true;
+    public bool canPause = true;
     
     public void backToMain(string _scName)
     {
