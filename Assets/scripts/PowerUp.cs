@@ -6,11 +6,12 @@ public class PowerUp : MonoBehaviour {
     public int typeOfPowerUp;
 
     private CharacterHealth characterHealth;
-
+    public GameObject tip0, tip1;
     private void Start() {
 
         characterHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterHealth>();
-            
+        tip0.SetActive(false);
+        tip1.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -22,6 +23,7 @@ public class PowerUp : MonoBehaviour {
                 case 0:
                     //mitad de daño por 30 segundos
                     characterHealth.StartCoroutine(characterHealth.ActivateTempShield(30));
+                   
                     break;
 
                 case 1:
@@ -31,6 +33,7 @@ public class PowerUp : MonoBehaviour {
 
                 case 2:
                     characterHealth.Modify(1);
+                    tip1.SetActive(true);
                     break;
 
                 default:
@@ -38,7 +41,8 @@ public class PowerUp : MonoBehaviour {
             }
 
             gameObject.SetActive(false);
-
+            tip0.SetActive(false);
+            tip1.SetActive(false);
 
         }
 
@@ -54,7 +58,15 @@ public class PowerUp : MonoBehaviour {
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
             gameObject.SetActive(true);
-
+            if (typeOfPowerUp == 0)
+            {
+                tip0.SetActive(true);
+            }
+            else
+            {
+                tip1.SetActive(true);
+            }
+            
             StartCoroutine(Deactivate());
 
 
