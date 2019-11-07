@@ -12,6 +12,8 @@ public class FinalBoss : MonoBehaviour
     ObjectPooler Pool;
     public Vector2 inicialPose;
 
+    public GameOver gameOver;
+
     bool resetPos = false, fase2 = false, fase3 = false, esperarBalazos;
     void Start()
     {
@@ -76,7 +78,12 @@ public class FinalBoss : MonoBehaviour
         if (Vida <= 0)
         {
             CamShake.UniCam.Shake();
-            Morir();
+
+
+            //Morir();
+            
+            gameOver.True();
+
             Pool.SpawnBoom(transform.position);
         }
         else if (!fase2 && Vida < Vidainicial * 0.75f)

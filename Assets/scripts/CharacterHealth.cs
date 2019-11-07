@@ -1,14 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour {
 
     public GameObject[] healthbar;
+    public GameObject shieldIcon;
 
     private int health;
     private int maxHealth;
     private int index = 0;
 
     public GameOver gameOver;
+
+    public bool tempShield = false;
+    public int counter = 0;
 
     void Start() {
 
@@ -17,21 +22,36 @@ public class CharacterHealth : MonoBehaviour {
         
     }
 
-    private void Update() {
+    private void OnCollisionEnter(Collision collision) {
 
-        //testing
+        if (collision.transform.GetComponent<Bullet>()) {
 
-        if (Input.GetKeyDown(KeyCode.D)) { //daño
+            if (tempShield) {
 
-            Modify(-1);
+                counter++;
 
+                if (counter % 2 == 0) {
+
+                    Modify(-1);
+
+                }
+
+            } else {
+
+                Modify(-1);
+
+            }
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.U)) { //life up (as powerup)
+    public IEnumerator ActivateTempShield(int time) {
 
-            Modify(2);
+        tempShield = true;
+        shieldIcon.SetActive(true);
+        yield return new WaitForSeconds(time);
 
-        }
+        tempShield = false;
+        shieldIcon.SetActive(false);
 
     }
 
@@ -60,12 +80,13 @@ public class CharacterHealth : MonoBehaviour {
 
         if (amount < 0 && health > 0) { //damage
 
+
             for (int i = index; i < Mathf.Abs(amount) + index; i++)
             {
-                if(i < healthbar.Length)
-                {
-                    healthbar[i].SetActive(false);
-                    health--;
+                if(i < healthbar.Length) {
+
+                        healthbar[i].SetActive(false);
+                        health--;
 
                 }
 
@@ -77,8 +98,6 @@ public class CharacterHealth : MonoBehaviour {
 
             
         }
-
-        Debug.Log("Remaining health: " + health);
 
         if (health <= 0) {
 

@@ -8,11 +8,15 @@ public class GameOver : MonoBehaviour {
 
 
     public Text finalScore;
-    private Score score;
+    public GameObject saveButton;
 
-    private PauseMenu pauseMenu;
+    private Score score;
     
     public void True() {
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
 
         GameObject.Find("CanvasPause").GetComponent<PauseMenu>().canPause = false;
 
@@ -21,6 +25,11 @@ public class GameOver : MonoBehaviour {
         score = GameObject.Find("HUD Canvas").GetComponent<Score>();
 
         finalScore.text = "SCORE \n" + score.score.ToString() + "\n IN " + score.time.ToString("F0") + " SECONDS";
+
+        if(score.score < score.hiscore)
+        {
+            saveButton.SetActive(false);
+        }
 
         gameObject.SetActive(true);
 
@@ -36,7 +45,9 @@ public class GameOver : MonoBehaviour {
 
     public void UpdateHiscores() {
 
-        Debug.Log("Save and exit");
+        PlayerPrefs.SetInt("MyScore", score.score);
+
+        SceneManager.LoadScene("MenuPrincipal");
 
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -22,9 +23,13 @@ public class Menu : MonoBehaviour
     float factMovim;
     float valorT = 0.0f;
 
+    public GameObject hiscoreText;
+
     void Start()
     {
         factMovim = 1.0f / tiempMovim;//fraccionamos el camino
+
+        hiscoreText.GetComponent<TMPro.TextMeshProUGUI>().text = PlayerPrefs.GetInt("MyScore", 0).ToString();
     }
     
     void Update()

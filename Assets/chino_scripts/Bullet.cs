@@ -28,7 +28,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
 
         Collider coli = collision.collider;
         if (coli.CompareTag("Enemie") && !Enemiga)
@@ -51,7 +50,7 @@ public class Bullet : MonoBehaviour
         }
         else if(coli.CompareTag("Player") && Enemiga)
         {
-            coli.GetComponent<CharacterHealth>().Modify(-1);
+            //coli.GetComponent<CharacterHealth>().Modify(-1);
         }
 
         int numero = 1;

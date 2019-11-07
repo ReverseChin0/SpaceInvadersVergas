@@ -28,8 +28,6 @@ public class ManagerEnemigos : MonoBehaviour
     public void Fin()
     {
         MyLoader = SceneLoader.instancia;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
         MyLoader.FadeOut("MenuPrincipal");
     }
 
